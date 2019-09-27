@@ -73,6 +73,7 @@ draft.age++;
 }
 
 return (
+
 <div className="App">
 <h1>
 Hello {person.name} ({person.age}) - {person.borned}

@@ -8,26 +8,37 @@
     "computed",
     "state"
   ],
-  "version": "0.1.0",
-  "main": "index.js",
+  "main": "dist/immox.js",
+  "umd:main": "dist/immox.umd.js",
+  "module": "dist/immox.module.js",
+  "jsnext:main": "dist/immox.module.js",
+  "react-native": "dist/immox.module.js",
+  "typings": "dist/index.d.ts",
+  "source": "index.ts",
+  "scripts": {
+    "build": "microbundle",
+    "test": "jest --runInBand",
+    "test:watch": "jest --watch --updateSnapshot --coverage false"
+  },
+  "version": "0.1.1",
   "author": "Dalci Bagolin - dalcib",
   "license": "MIT",
   "repository": "https://github.com/dalcib/immox.git",
   "bugs": "https://github.com/dalcib/immox/issues",
   "homepage": "https://github.com/dalcib/immox#readme",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "peerDependencies": {
     "immer": "^2.0.0 || ^3.0.0 || ^4.0.0",
     "react": "^16.8.0",
-    "use-immer": "^0.3.4"
+    "immox": "^0.3.4"
   },
   "devDependencies": {
     "@types/react": "^16.8.13",
+    "@types/jest": "^24.0.18",
     "immer": "^4.0.0",
     "microbundle": "^0.11.0",
     "typescript": "^3.4.3",
-    "use-immer": "^0.3.4"
+    "use-immer": "^0.3.4",
+    "react-test-renderer": "^16.9.0",
+    "jest": "^24.9.0"
   }
 }
