@@ -1,12 +1,12 @@
-import { useMemo } from 'react'
-//import { immerable } from 'immer'
-import { useImmer } from 'use-immer'
+import { useMemo, useState, useCallback } from 'react'
+import { Draft, produce } from 'immer'
 
-export function useImmox<State extends object>(initialState: State) {
+export function useImmox<S = any>(
+  initialValue: S | (() => S)
+): [S, (f: (draft: Draft<S>) => void | S) => void]
+export function useImmox(initialState: any) {
   const depends: Set<string | number | symbol> = new Set()
-  const clonedState = {
-    /* [immerable]: true */
-  } as State
+  const clonedState = {}
   const getters: Map<string, { get: () => any; depends: (string | number | symbol)[] }> = new Map()
   const proxy = new Proxy(initialState, {
     get: function(target, name) {
@@ -14,7 +14,7 @@ export function useImmox<State extends object>(initialState: State) {
     },
   })
   let keys: string[] = []
-  let obj: State | object = {}
+  let obj = {}
   if (Object.getPrototypeOf(initialState).constructor.name === 'Object') {
     keys = Object.keys(initialState)
     obj = initialState
@@ -36,20 +36,23 @@ export function useImmox<State extends object>(initialState: State) {
     }
   })
 
-  const [state, updateState] = useImmer<State>(clonedState)
+  const [state, updateState] = useState(clonedState)
+  const updateDraft = useCallback(updater => {
+    updateState(produce(updater))
+  }, [])
 
   getters.forEach((value, prop) => {
     const depends = value.depends.map(depend => state[depend])
     //eslint-disable-next-line
     useMemo(() => {
-      updateState(d => {
+      updateDraft((d: Draft<any>) => {
         d[prop] = value.get.call(d)
       })
       //eslint-disable-next-line
     }, depends)
   })
 
-  return [state, updateState]
+  return [state, updateDraft]
 }
 
 export default useImmox

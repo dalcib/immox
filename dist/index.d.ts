@@ -1,2 +1,5 @@
-export declare function useImmox<State extends object>(initialState: State): (State | ((f: (draft: import("immer").Draft<State>) => void | State) => void))[];
-export default useImmox;
+import { Draft } from 'immer'
+export declare function useImmox<S = any>(
+  initialValue: S | (() => S)
+): [S, (f: (draft: Draft<S>) => void | S) => void]
+export default useImmox

@@ -1,13 +1,7 @@
 {
   "name": "immox",
   "description": "State management with Immer and Computed Properties",
-  "keywords": [
-    "immar",
-    "mobx",
-    "immutability",
-    "computed",
-    "state"
-  ],
+  "version": "0.1.2",
   "main": "dist/immox.js",
   "umd:main": "dist/immox.umd.js",
   "module": "dist/immox.module.js",
@@ -20,7 +14,6 @@
     "test": "jest --runInBand",
     "test:watch": "jest --watch --updateSnapshot --coverage false"
   },
-  "version": "0.1.1",
   "author": "Dalci Bagolin - dalcib",
   "license": "MIT",
   "repository": "https://github.com/dalcib/immox.git",
@@ -28,8 +21,7 @@
   "homepage": "https://github.com/dalcib/immox#readme",
   "peerDependencies": {
     "immer": "^2.0.0 || ^3.0.0 || ^4.0.0",
-    "react": "^16.8.0",
-    "immox": "^0.3.4"
+    "react": "^16.8.0"
   },
   "devDependencies": {
     "@types/react": "^16.8.13",
@@ -37,8 +29,14 @@
     "immer": "^4.0.0",
     "microbundle": "^0.11.0",
     "typescript": "^3.4.3",
-    "use-immer": "^0.3.4",
     "react-test-renderer": "^16.9.0",
     "jest": "^24.9.0"
-  }
+  },
+  "keywords": [
+    "immer",
+    "mobx",
+    "immutability",
+    "computed",
+    "state"
+  ]
 }
