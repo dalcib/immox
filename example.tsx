@@ -97,7 +97,7 @@ export function Example() {
 }
 
 //Immox also work with Object Literal
-/* const objPerson = {
+export const objPerson = {
   firstName: 'Michel',
   surName: 'W.',
   age: 33,
@@ -120,4 +120,4 @@ export function Example() {
   add() {
     this.collection.push(Math.round(Math.random() * 10))
   },
-} */
+}
