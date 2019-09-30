@@ -54,3 +54,6 @@ export function useImmox(initialState: any) {
 }
 
 export default useImmox
+
+type SetState = <S = any>(f: (draft: Draft<S>) => void | S) => void
+export { Draft, SetState }
