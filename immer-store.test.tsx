@@ -241,12 +241,12 @@ describe('React', () => {
     }
 
     const { Provider, result, Context } = ContextProvider(config)
-    expect(result.current.state.upperFoo).toEqual(['FOO', 'BAR'])
+    expect(result.current.state.upperFoo.sort()).toEqual(['FOO', 'BAR'].sort())
     act(() => {
       result.current.setState((d: any) => {
         d.updateFoo()
       })
     })
-    expect(result.current.state.upperFoo).toEqual(['FOO', 'BAR', 'BAZ'])
+    expect(result.current.state.upperFoo.sort()).toEqual(['FOO', 'BAR', 'BAZ'].sort())
   })
 })

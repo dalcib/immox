@@ -100,4 +100,12 @@ describe('test useImmox with a Literal Object', () => {
     })
     expect(result.current.state.collection.length).toBe(9)
   })
+
+  test('should increment collection', () => {
+    expect(result.current.state.collection.length).toBe(8)
+    act(() => {
+      result.current.state.add(88888)
+    })
+    expect(result.current.state.collection.length).toBe(9)
+  })
 })

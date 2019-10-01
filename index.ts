@@ -30,6 +30,18 @@ export function useImmox(initialState: any) {
         getters.set(prop, { get: desc.get, dependents: Array.from(dependents) })
         dependents.clear()
       }
+      if (desc && typeof desc.value === 'function') {
+        Object.defineProperty(initialState, prop, {
+          ...desc,
+          value: function producer(...args: any) {
+            return produce(this, (draft: any) => {
+              console.log(desc.value.toString(), args)
+              desc.value.apply(draft, args)
+            })
+          },
+        })
+        //console.log(initialState[prop].toString(), '###############')
+      }
     })
     initialState[immox] = getters
   }, [])
