@@ -89,7 +89,7 @@ export function Example() {
         type="button"
         onClick={() =>
           updatePerson(d => {
-            d.add()
+            d.add('x')
           })
         }
       >

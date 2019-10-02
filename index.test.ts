@@ -1,11 +1,20 @@
 import { renderHook, act } from '@testing-library/react-hooks'
 import useImmox from './index'
+import { produce } from 'immer'
 import { initPerson, objPerson } from './example'
 
 describe('test useImmox with a Class', () => {
   const { result } = renderHook(() => {
     const [state, setState] = useImmox(initPerson)
     return { state, setState }
+  })
+
+  it.skip('should test immutability', () => {
+    const state = result.current.state
+    const newState = produce(state, (d: any) => {
+      d.add()
+    })
+    expect(state).toEqual(newState)
   })
 
   it('should comput the name', () => {
