@@ -12,7 +12,8 @@
   "scripts": {
     "build": "microbundle",
     "test": "jest --runInBand",
-    "test:watch": "jest --watch --updateSnapshot --coverage false"
+    "test:watch": "jest --watch --updateSnapshot --coverage false",
+    "lint": "eslint --ignore-pattern dist/** --ext \".js,.ts,.tsx\" ."
   },
   "author": "Dalci Bagolin - dalcib",
   "license": "MIT",
@@ -24,14 +25,20 @@
     "react": "^16.8.0"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/plugin-proposal-object-rest-spread": "^7.6.2",
     "@babel/preset-env": "^7.6.2",
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-typescript": "^7.6.0",
+    "@testing-library/react-hooks": "^2.0.1",
     "@types/jest": "^24.0.18",
     "@types/react": "^16.8.13",
+    "eslint": "^6.5.1",
+    "eslint-config-satya164": "^3.1.1",
     "immer": "^4.0.0",
     "jest": "^24.9.0",
     "microbundle": "^0.11.0",
+    "prettier": "^1.18.2",
     "react": "^16.10.1",
     "react-hooks-testing-library": "^0.6.0",
     "react-test-renderer": "^16.10.1",
@@ -50,6 +57,10 @@
       ],
       "@babel/preset-typescript",
       "@babel/preset-react"
+    ],
+    "plugins": [
+      "@babel/proposal-class-properties",
+      "@babel/proposal-object-rest-spread"
     ]
   },
   "keywords": [
@@ -58,5 +69,19 @@
     "immutability",
     "computed",
     "state"
-  ]
+  ],
+  "eslintConfig": {
+    "env": {
+      "browser": true,
+      "node": true,
+      "es6": true
+    },
+    "extends": "satya164",
+    "rules": {
+      "prettier/prettier": "off",
+      "jest/no-disabled-tests": "off",
+      "no-console": "off",
+      "no-undef": "off"
+    }
+  }
 }

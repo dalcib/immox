@@ -21,8 +21,8 @@ class Person {
   get even() {
     return (this.collection && this.collection.filter(n => n % 2 === 0)) || []
   }
-  add() {
-    //console.log('add')
+  add(x: any) {
+    console.log('add', x)
     this.collection.push(Math.round(Math.random() * 10))
   }
 }
@@ -70,7 +70,9 @@ export function Example() {
       />
       <br />
       <br />
-      <button onClick={becomeOlder}>Older</button>
+      <button type="button" onClick={becomeOlder}>
+        Older
+      </button>
       <br />
       <br />
       <h3>{person.collection.join(',')}</h3>
@@ -84,6 +86,7 @@ export function Example() {
       <br />
       <br />
       <button
+        type="button"
         onClick={() =>
           updatePerson(d => {
             d.add()
@@ -117,7 +120,8 @@ export const objPerson = {
   get even() {
     return (this.collection && this.collection.filter(n => n % 2 === 0)) || []
   },
-  add() {
+  add(x: any) {
+    console.log('add', x)
     this.collection.push(Math.round(Math.random() * 10))
   },
 }

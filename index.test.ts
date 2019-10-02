@@ -8,7 +8,7 @@ describe('test useImmox with a Class', () => {
     return { state, setState }
   })
 
-  test('should comput the name', () => {
+  it('should comput the name', () => {
     expect(result.current.state.name).toBe('Michel W.')
     act(() => {
       result.current.setState(d => {
@@ -19,7 +19,7 @@ describe('test useImmox with a Class', () => {
     //console.log(result.current.state)
   })
 
-  test('should comput the year borned', () => {
+  it('should comput the year borned', () => {
     act(() => {
       result.current.setState(d => {
         d.age++
@@ -28,7 +28,7 @@ describe('test useImmox with a Class', () => {
     expect(result.current.state.borned).toBe(1985)
   })
 
-  test('should comput sum, average and even  from collection', () => {
+  it('should comput sum, average and even  from collection', () => {
     act(() => {
       result.current.setState(d => {
         d.collection.push(7)
@@ -41,14 +41,22 @@ describe('test useImmox with a Class', () => {
     expect(result.current.state.even).toEqual([2, 4, 6, 8])
   })
 
-  test('should increment collection', () => {
+  it('should increment collection', () => {
     expect(result.current.state.collection.length).toBe(8)
     act(() => {
       result.current.setState(d => {
-        d.add()
+        d.add('class')
       })
     })
     expect(result.current.state.collection.length).toBe(9)
+  })
+
+  it('should increment collection without setState', () => {
+    expect(result.current.state.collection.length).toBe(9)
+    act(() => {
+      result.current.state.add('class')
+    })
+    expect(result.current.state.collection.length).toBe(10)
   })
 })
 
@@ -58,7 +66,7 @@ describe('test useImmox with a Literal Object', () => {
     return { state, setState }
   })
 
-  test('should comput the name', () => {
+  it('should comput the name', () => {
     expect(result.current.state.name).toBe('Michel W.')
     act(() => {
       result.current.setState(d => {
@@ -69,7 +77,7 @@ describe('test useImmox with a Literal Object', () => {
     //console.log(result.current.state)
   })
 
-  test('should comput the year borned', () => {
+  it('should comput the year borned', () => {
     act(() => {
       result.current.setState(d => {
         d.age++
@@ -78,7 +86,7 @@ describe('test useImmox with a Literal Object', () => {
     expect(result.current.state.borned).toBe(1985)
   })
 
-  test('should comput sum, average and even from collection', () => {
+  it('should comput sum, average and even from collection', () => {
     act(() => {
       result.current.setState(d => {
         d.collection.push(7)
@@ -91,21 +99,21 @@ describe('test useImmox with a Literal Object', () => {
     expect(result.current.state.even).toEqual([2, 4, 6, 8])
   })
 
-  test('should increment collection', () => {
+  it('should increment collection with setState', () => {
     expect(result.current.state.collection.length).toBe(8)
     act(() => {
       result.current.setState(d => {
-        d.add()
+        d.add('litearl')
       })
     })
     expect(result.current.state.collection.length).toBe(9)
   })
 
-  test('should increment collection', () => {
-    expect(result.current.state.collection.length).toBe(8)
-    act(() => {
-      result.current.state.add(88888)
-    })
+  it('should increment collection without setState', () => {
     expect(result.current.state.collection.length).toBe(9)
+    act(() => {
+      result.current.state.add('literal')
+    })
+    expect(result.current.state.collection.length).toBe(10)
   })
 })
