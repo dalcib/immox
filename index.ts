@@ -141,10 +141,10 @@ export function useImmox(initialState: any) {
       console.log('Class')
     }
 
-    if (Object.keys(Object.getPrototypeOf(initialState)).includes('add')) {
+  /*   if (Object.keys(Object.getPrototypeOf(initialState)).includes('add')) {
       producer(Object.getPrototypeOf(initialState), 'add')
       console.log(initialState.add.toString())
-    }
+    } */
 
     //initialState[immerable] = true
 

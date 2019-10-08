@@ -1,7 +1,9 @@
 import React from 'react'
 import { useImmox } from './index'
+import { immerable } from 'immer'
 
 class Person {
+  [immerable] = true
   firstName = 'Michel'
   surName = 'W.'
   age = 33

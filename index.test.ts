@@ -60,7 +60,7 @@ describe('test useImmox with a Class', () => {
     expect(result.current.state.collection.length).toBe(9)
   })
 
-  it('should increment collection without setState', () => {
+  it.skip('should increment collection without setState', () => {
     expect(result.current.state.collection.length).toBe(9)
     act(() => {
       result.current.state.add('class')
