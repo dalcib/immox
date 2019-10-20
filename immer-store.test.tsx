@@ -17,7 +17,7 @@ function ContextProvider(initialState: any) {
     state: result.current.state,
     setState: result.current.setState,
   }
-  //eslint-disable-next-line @typescript-eslint/no-unused-vars
+  ////eslint-disable-next-line @typescript-eslint/no-unused-vars
   function Provider({ children }: any) {
     return <Context.Provider value={store}> {children} </Context.Provider>
   }

@@ -40,7 +40,9 @@
     "microbundle": "^0.11.0",
     "prettier": "^1.18.2",
     "react": "^16.10.1",
+    "react-dom": "^16.10.2",
     "react-hooks-testing-library": "^0.6.0",
+    "react-native-testing-library": "^1.11.1",
     "react-test-renderer": "^16.10.1",
     "ts-node": "^8.4.1",
     "typescript": "^3.4.3"
@@ -81,7 +83,9 @@
       "prettier/prettier": "off",
       "jest/no-disabled-tests": "off",
       "no-console": "off",
-      "no-undef": "off"
+      "no-undef": "off",
+      "@typescript-eslint/no-unused-vars": "off"
     }
-  }
+  },
+  "dependencies": {}
 }
